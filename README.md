@@ -22,7 +22,7 @@ Sistema para cadastro e gerenciamento de heróis e superpoderes.
     ```properties
     spring.datasource.url=jdbc:sqlserver://localhost:1433;databaseName=superherois;TrustServerCertificate=true
     spring.datasource.username=sa
-    spring.datasource.password=11001887
+    spring.datasource.password=1234
     spring.jpa.hibernate.ddl-auto=none
     spring.jpa.hibernate.naming.physical-strategy=org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
     spring.jpa.show-sql=true
