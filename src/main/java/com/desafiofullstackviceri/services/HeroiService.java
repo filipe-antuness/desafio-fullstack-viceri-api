@@ -38,13 +38,14 @@ public class HeroiService {
 
     public List<Heroi> listarHerois() {
         List<Heroi> herois = repository.findAll();
+        if (herois == null || herois.isEmpty()) {
+            throw new RuntimeException("Nenhum herói encontrado!");
+        }
         return herois;
     }
 
     public Heroi buscarHeroiPorId(Integer id) {
-        if (id == null) {
-            throw new IllegalArgumentException("ID não pode ser nulo!");
-        }
+        validarId(id);
         Heroi heroi = repository.buscarHeroiPorId(id);
         if (heroi == null) {
             throw new RuntimeException("Herói não encontrado!");
@@ -54,9 +55,7 @@ public class HeroiService {
 
     public int atualizarHeroi(Integer id, Heroi heroi, Set<Integer> idsSuperpoderes) {
 
-        if (id == null) {
-            throw new IllegalArgumentException("ID não pode ser nulo!");
-        }
+        validarId(id);
 
         int heroiExistente = repository.atualizarHeroi(id, heroi.getNome(), heroi.getNomeHeroi(),
                 heroi.getAltura(), heroi.getPeso(), heroi.getDataNascimento());
@@ -76,12 +75,17 @@ public class HeroiService {
     }
 
     public String deletarHeroi(Integer id) {
-        if (id == null) {
-            throw new IllegalArgumentException("ID não pode ser nulo!");
-        }
+        validarId(id);
+
         Heroi heroi = repository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Herói não encontrado!"));
         repository.delete(heroi);
         return "Herói deletado com sucesso!";
+    }
+
+    private void validarId(Integer id) {
+        if (id == null || id <= 0) {
+            throw new IllegalArgumentException("ID inválido!");
+        }
     }
 }
