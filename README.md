@@ -2,6 +2,14 @@
 
 Sistema para cadastro e gerenciamento de heróis e superpoderes.
 
+- Utilizei o Java 21 com Spring Boot, pois é a versão que estou utilizando 
+atualmente para alguns trabalhos da pós-graduação.
+
+- Escolhei o SQL Server como banco de dados, pois já utilizei anteriormente em alguns projetos.
+
+- Já o IntelliJ IDEA é a IDE que mais utilizo, e por considerar ser a 
+melhor para trabalhar com Java e Spring Boot atualmente.
+
 ## Tecnologias Utilizadas
 
 - **Java:** 21
