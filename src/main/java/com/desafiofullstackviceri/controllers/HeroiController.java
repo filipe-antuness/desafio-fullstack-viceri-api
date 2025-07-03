@@ -19,8 +19,9 @@ public class HeroiController {
     private HeroiService heroiService;
 
     @PostMapping("/cadastrar")
-    public String cadastrarHeroi(@RequestBody Heroi heroi) {
-        return heroiService.cadastrarHeroi(heroi);
+    public ResponseEntity<Void> cadastrarHeroi(@RequestBody Heroi heroi) {
+        heroiService.cadastrarHeroi(heroi);
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     @GetMapping("/listar")
@@ -44,8 +45,9 @@ public class HeroiController {
     }
 
     @DeleteMapping("/deletar/{id}")
-    public String deletarHeroi(@PathVariable Integer id) {
-        return heroiService.deletarHeroi(id);
+    public ResponseEntity<Void> deletarHeroi(@PathVariable Integer id) {
+        heroiService.deletarHeroi(id);
+        return ResponseEntity.status(HttpStatus.OK).build();
     }
 
 
